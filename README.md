@@ -1,22 +1,22 @@
 # MediaUploadProject
 
-This project is class assignment that allows users to select and upload either text, image, video, or audio for a location. 
+This project is a class assignment that allows users to select and upload either text, image, video, or audio for a location. 
 
 ## Understanding the Process
 
-There are three general steps to this project.
+There are three general steps to the media upload process.
 1. Media Selection
 2. Metadata Validation
 3. Media Upload
 
-## Technology in Use
-Javascript, Amazon Web Services S3
+## Technologies in Use
+Javascript, Amazon Web Services S3, ...
 
 Current project uses credentials from an aws S3 bucket owned by Woody Jean-Louis and will be disabled at the end of this project, so remember to change testing credentials for proper use and to add production credentials as environment variables for release. 
 
 ## Metadata Key/Value data
 
-Below are the properties that will available in the evety metadata object saved in the database. Please keep in mind that every key is not required and not available for certain media types, so certain values may be undefined. 
+Below are the properties that will be available in every metadata object saved in the database. Please keep in mind that every key is not required and will not be available for certain media types, so certain values may be undefined. 
 
 
 ### Title: string (Required)
