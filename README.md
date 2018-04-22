@@ -22,50 +22,50 @@ Below are the properties that will be available in every metadata object saved i
 ### Title: string (Required)
 Examples:
 
-Title="A Pilot's Guide to Aircraft Insurance"
-Title="The Sound of Music"
-Title="Green on Greens"
-Title="AOPA's Tips on Buying Used Aircraft"
+title="A Pilot's Guide to Aircraft Insurance"
+title="The Sound of Music"
+title="Green on Greens"
+title="AOPA's Tips on Buying Used Aircraft"
 
 ### Creator: string (Required)
 Examples:
 
-Creator="John, Elton"
+creator="John, Elton"
 
 ### Subject (Caption): string (Optional)
 Examples:
 
-Subject="Aircraft leasing and renting"
-Subject="Dogs"
-Subject="Olympic skiing"
-Subject="Street, Picabo"
+subject="Aircraft leasing and renting"
+subject="Dogs"
+subject="Olympic skiing"
+subject="Street, Picabo"
 
 ### Description: string (Required when mediatype is text, optional otherwise)
 Examples:
 
-Description="Illustrated guide to airport markings and lighting signals, with particular reference to SMGCS (Surface Movement Guidance and Control System) for airports with low visibility conditions."
+description="Illustrated guide to airport markings and lighting signals, with particular reference to SMGCS (Surface Movement Guidance and Control System) for airports with low visibility conditions."
 
-Description="Teachers Domain is a multimedia library for K-12 science educators, developed by WGBH through funding from the National Science Foundation as part of its National Science Digital Library initiative. The site offers a wealth of classroom-ready instructional resources, as well as online professional development materials and a set of tools which allows teachers to manage, annotate, and share the materials they use in classroom teaching."
+description="Teachers Domain is a multimedia library for K-12 science educators, developed by WGBH through funding from the National Science Foundation as part of its National Science Digital Library initiative. The site offers a wealth of classroom-ready instructional resources, as well as online professional development materials and a set of tools which allows teachers to manage, annotate, and share the materials they use in classroom teaching."
 
 ### Publisher: string (Optional)
 Examples:
 
-Publisher="University of South Where"
-Publisher="Funky Websites, Inc."
-Publisher="Carmen Miranda"
+publisher="University of South Where"
+publisher="Funky Websites, Inc."
+publisher="Carmen Miranda"
 
 ### Contributor (Contributor(s)): string (Optional)
 Examples:
 
-Contributor="John, Elton"
+contributor="John, Elton"
 
 ### Date: String (Required)
 Date object using Coordinated Universal Time (UTC)
 
 Examples:
 
-format = "yyyy-m-dThh:mm:ssZ"
-Date = "2012-1-31T11:00:00Z"
+format is "yyyy-m-dThh:mm:ssZ"
+date="2012-1-31T11:00:00Z"
 
 ### Type: string (Required)
 * Text: just text
@@ -75,44 +75,42 @@ Date = "2012-1-31T11:00:00Z"
 
 Examples:
 
-Type="Image"
-Type="Sound"
-Type="Text"
+type="Image"
+type="Sound"
+type="Text"
 
 ### Format: string (Required)
 * Text, video, image, or audio
 Examples:
 
-Format="image/gif"
-Format="4 kB"> Subject="Saturn"
+format="image"
+
 ### Identifier: string (Required)
 Assigned by database team
 
 Examples:
 
-Identifier="http://purl.oclc.org/metadata/dublin_core/& quot;
-Identifier="ISBN:0385424728"
-Identifier="H-A-X 5690B" [publisher number]
+identifier="http://purl.oclc.org/metadata/dublin_core/& quot;
+identifier="ISBN:0385424728"
+identifier="H-A-X 5690B" [publisher number]
 ### Source: string (Optional)
 
 Examples:
 
-Source="RC607.A26W574 1996" [where "RC607.A26W574 1996" is the call number of the print version of the resource, from which the present version was scanned]
+source="RC607.A26W574 1996" [where "RC607.A26W574 1996" is the call number of the print version of the resource, from which the present version was scanned]
 
-Source="Image from page 54 of the 1922 edition of Romeo and Juliet"
+source="Image from page 54 of the 1922 edition of Romeo and Juliet"
 ### Language: string (Required)
 Examples:
 
-Language="en"
-Language="fr"
-Language="Primarily English, with some abstracts also in French."
-Language="en-US"
+language="english"
+language="french"
 
 ### Relation: string (Optional)
 Examples:
 
-Relation="Elton John's 1976 song Candle in the Wind"
-Relation="arnhem.gif"
+relation="Elton John's 1976 song Candle in the Wind"
+relation="arnhem.gif"
 
 ### Coverage: JSON object (Required)
 This key is usually a string, but because of the requirements of other teams we decided to let this be a JSON object which will contain geospacial data. The information passed by the search team will be saved as the value of this key, So other teams can feel free to add useful information to that object. 
@@ -122,7 +120,7 @@ This key is usually a string, but because of the requirements of other teams we 
 ### Rights: string (Optional)
 Examples:
 
-Rights="Access limited to members"
+rights="Access limited to members"
 
 ### Resolution: string (Required for image and video media types)
 Pixels in “####x####” format
