@@ -32,7 +32,7 @@ Examples:
 
 Creator="John, Elton"
 
-### Subject (Caption): string (Optional
+### Subject (Caption): string (Optional)
 Examples:
 
 Subject="Aircraft leasing and renting"
@@ -40,7 +40,7 @@ Subject="Dogs"
 Subject="Olympic skiing"
 Subject="Street, Picabo"
 
-### Description: string (Rquired when mediatype is text, optional otherwise)
+### Description: string (Required when mediatype is text, optional otherwise)
 Examples:
 
 Description="Illustrated guide to airport markings and lighting signals, with particular reference to SMGCS (Surface Movement Guidance and Control System) for airports with low visibility conditions."
@@ -64,9 +64,8 @@ Date object using Coordinated Universal Time (UTC)
 
 Examples:
 
-Date="1998-02-16"
-Date="1998-02"
-Date="1998"
+format = "yyyy-m-dThh:mm:ssZ"
+Date = "2012-1-31T11:00:00Z"
 
 ### Type: string (Required)
 * Text: just text
