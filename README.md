@@ -75,9 +75,9 @@ date="2012-1-31T11:00:00Z"
 
 Examples:
 
-type="Image"
-type="Sound"
-type="Text"
+type="text"
+type="mp4"
+type="tiff"
 
 ### Format: string (Required)
 * Text, video, image, or audio
