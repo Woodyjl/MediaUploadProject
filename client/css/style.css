@@ -3,65 +3,28 @@ body{
 }
 /* Global Style */
 .outmostBox{
-    height: 90vh;
+    /* height: 97vh; */
     margin-top: 3vh;
     /* border: 0.5px solid gray; */
 }
 
-.mapPreview{
-  background-image: url('../assets/dummyMap.png');
-  height: 20vh;
-  min-height: 200px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  margin-bottom: 10px;
-}
-
-.locationSelected{
+.textCenter{
   text-align: center;
 }
 
-.locationSelected h5{
-  margin:5px 0 15px 0;
-  font-weight: 400;
-}
-
-.dropzone {
-    outline: 2px dashed #6c757d;
-    outline-offset: -13px;
-    border: 0;
-    border-radius: 5px;
-    background: rgba(52,61,77,.1);
-    margin: 2vh 2vw;
-    padding:;
-    height: 35vh;
-    width: 100%;
-    transition: background .15s ease-in-out,outline-offset .15s ease-in-out;
-}
-
-.dropzone:hover {
-    background: rgba(52,61,77,.2);
-    outline-offset: -20px;
-}
-
 .flexColCenterIt{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.upload.icon{
-  font-size: 5em;
-}
-
-.btn{
+.btns .btn{
   width: 70%;
   margin:8px 0;
 }
 
-hr{
+.btns hr{
   border-top: 1px solid #6c757db8;
   width: 75%;
 }
@@ -71,10 +34,10 @@ hr{
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
-  .btn{
+  .btns .btn{
     width:95%;
   }
-  hr{
+  .btns hr{
     width:95%;
   }
 }
