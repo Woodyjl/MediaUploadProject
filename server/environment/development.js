@@ -1,5 +1,5 @@
 module.exports = {
-    "DATABASE_URI": "mongodb://localhost:27017/mediaMetadata",
+    "DATABASE_URI": "mongodb://dbOwner:1234567890@localhost:27017/MediaUpload",
     "SESSION_SECRET": "The Juice is really Juicy",
     "HOST_URI": "https://localhost",
     "AWS": {
