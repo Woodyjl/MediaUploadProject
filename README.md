@@ -60,12 +60,12 @@ Examples:
 contributor="John, Elton"
 
 ### Date: String (Required)
-Date object using Coordinated Universal Time (UTC)
+Date object using ISO 8601 format
 
 Examples:
 
-format is "yyyy-m-dThh:mm:ssZ"
-date="2012-1-31T11:00:00Z"
+format is "YYYY-MM-DDTHH:mm:ss.sssZ"
+date="2012-01-31T11:00:00.000Z"
 
 ### Type: string (Required)
 * Text: just text
