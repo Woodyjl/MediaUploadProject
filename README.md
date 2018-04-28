@@ -14,6 +14,19 @@ Javascript, Amazon Web Services S3, ...
 
 Current project uses credentials from an aws S3 bucket owned by Woody Jean-Louis and will be disabled at the end of this project, so remember to change testing credentials for proper use and to add production credentials as environment variables for release. 
 
+## Requirements
+
+Please make sure you have mongodb, npm, and node installed as it is a dependency. Make sure to run npm install to download all third party dependencies.  
+
+## Installation
+
+Download files into project.
+
+Edit the /server/environment/development.js to reflect your own local mongodb url.
+
+to start server run `npm start` in terminal
+
+
 ## Metadata Key/Value data
 
 Below are the properties that will be available in every metadata object saved in the database. Please keep in mind that every key is not required and will not be available for certain media types, so certain values may be undefined. 
