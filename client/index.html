@@ -2,6 +2,8 @@
 <!doctype html>
 <html lang="en">
   <head>
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -17,6 +19,24 @@
     <title>Upload Media</title>
   </head>
   <body>
+  <form action="https://s3-bucket.s3.amazonaws.com/" method="post" enctype="multipart/form-data" id="myform">
+    <input type="hidden" name="key" value="uploads/${filename}"> <input type="hidden" name="AWSAccessKeyId" value="YOUR_AWS_ACCESS_KEYydnbdbssrnnr" id="fld_AWSAccessKeyId">
+    <input type="hidden" name="acl" value="private">
+    <input type="hidden" name="success_action_redirect" value="http://localhost/" id="fld_redirect">
+    <input type="hidden" name="policy" value="YOUR_POLICY_DOCUMENT_BASE64_ENCODED" id="fld_Policy">
+    <input type="hidden" name="signature" value="YOUR_CALCULATED_SIGNATURE" id="fld_Signature">
+    <input type="hidden" name="Content-Type" value="image/jpeg" id="fld_contentType">
+    <!-- Include any additional input fields here -->
+    File to upload to S3: <input name="file" type="file">
+    <br>
+    <input type="submit" value="Upload File to S3" id="btn_submit">
+  </form>
+
+
+
+
+
+
     <div class="container outmostBox">
       <div class="row">
         <div class="col-sm-12">
@@ -49,5 +69,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/dropzone.js"></script>
+
+    <!-- AWS sdk -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.227.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/uploadProcess.js"></script>
+    <!-- End AWS sdk -->
   </body>
 </html>

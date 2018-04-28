@@ -6,6 +6,9 @@ var schema = new mongoose.Schema({
     },
     s3Credentials: {
         type: Object
+    },
+    expiration: {
+        type: String
     }
 });
 

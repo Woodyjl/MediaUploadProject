@@ -1,9 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.use('/*', function(req, res, next) {
+    // Maybe add middleware to check for requirements before reaching routes. ie Authentication
+    next();
+});
+
+router.use('/mediaUpload', require('./media/media.js'));
+
+// Make sure this is after all of
+// the registered routes!
+router.use(function(req, res) {
+    res.status(404).end();
 });
 
 module.exports = router;

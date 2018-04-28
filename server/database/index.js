@@ -13,4 +13,3 @@ db.once('open', function() {
     // we're connected!
     console.log("Connection to database was successful!!!")
 });
-
