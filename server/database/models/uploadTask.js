@@ -2,13 +2,16 @@ var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
     metadata: {
-        type: Object
+        type: Object,
+        required : true
     },
     s3Credentials: {
-        type: Object
+        type: Object,
+        required: true
     },
     expiration: {
-        type: String
+        type: String,
+        required: true
     }
 });
 

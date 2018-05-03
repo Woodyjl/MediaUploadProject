@@ -5,10 +5,15 @@ const env = require('../../environment/index');
 const AWS_BUCKET_NAME = env.AWS.bucketName;
 const AWS_ACCESS_ID = env.AWS.accessKeyId;
 const AWS_SECRET_KEY = env.AWS.secretAccessKey;
+const uuidv1 = require('uuid/v1');
 var crypto = require( "crypto" );
+var AWS = require('aws-sdk');
+var CronJob = require('cron').CronJob;
+
 
 const mongoose = require('mongoose');
 const uploadTasks = mongoose.model('UploadTasks');
+const metadatas = mongoose.model('Metadata');
 
 const characterMax = 100;
 
@@ -24,7 +29,7 @@ const metadataSchema = Joi.object().keys({
     title : Joi.string().required().max(characterMax),
     creator : Joi.string().required().max(characterMax),
     subject : Joi.string().optional().max(characterMax),
-    description : Joi.string().when('format', { is: Joi.valid('text'), then: Joi.string().required().max(characterMax * 5), otherwise: Joi.string().max(500) }),
+    description : Joi.string().when('format', { is: Joi.valid('text'), then: Joi.string().required().max(characterMax * 5), otherwise: Joi.string().max(characterMax * 5) }),
     publisher : Joi.string().optional().max(characterMax),
     contributor : Joi.string().optional().max(characterMax),
     date : Joi.string().required().regex(/^[0-9]{4}-[0-9]{1,2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$/),
@@ -84,12 +89,44 @@ function createUploadTask(s3Credentials, metadata, callback) {
     }, callback);
 }
 
-function removeUploadTask(uploadTask) {
-
+function removeUploadTask(uploadTask, callback) {
+    uploadTasks.remove({ size: 'large' }, callback);
 }
 
-function saveMetadata(metadata) {
+function saveMetadata(metadata, callback) {
+    metadatas.update(metadata.identifier, metadata, callback);
+}
 
+function verifyUpload(uploadTask, callback) {
+    const metadata = uploadTask.metadata;
+
+
+    AWS.config = AWS.config || new AWS.Config();
+    AWS.config.update({ accessKeyId: AWS_ACCESS_ID, secretAccessKey: AWS_SECRET_KEY, region: 'us-east-1' });
+
+    var s3bucket = new AWS.S3({params: {Bucket: AWS_BUCKET_NAME}, apiVersion: '2006-03-01' });
+
+    var params = {
+        MaxKeys: 1, //(Integer) Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
+        //Marker: '', //(String) Specifies the key to start with when listing objects in a bucket.
+        Prefix: metadata.fullFileName  //(String) Limits the response to keys that begin with the specified prefix.
+    };
+
+    s3bucket.listObjects(params, function (err, data) {
+        if (err) {
+            callback(err, false);
+            return;
+        }
+
+        // File has not been uploaded yet
+        if (data.Contents.length === 0) {
+            callback(undefined, false);
+            return;
+        }
+
+        // File has uploaded successfully
+        callback(undefined, true);
+    });
 }
 
 router.post('/validateMetadata', function (req, res, next) {
@@ -103,8 +140,6 @@ router.post('/validateMetadata', function (req, res, next) {
         return;
     }
 
-    const redirectUrl = "http://example.com/uploadsuccess";
-
     const result = Joi.validate(metadata, metadataSchema);
 
     if (result.error !== null) {
@@ -116,9 +151,21 @@ router.post('/validateMetadata', function (req, res, next) {
 
     // We only want to continue if the format is anything other than text
     if (metadata.format === 'text') {
-        res.send({});
+        saveMetadata(metadata,function (err, metadata) {
+            res.send({ metadata: metadata });
+            next();
+        });
         return;
     }
+
+    const redirectUrl = "http://example.com/uploadsuccess";
+
+    const uniqueId = uuidv1(); // ⇨ 'f64f2940-fae4-11e7-8c5f-ef356f279131';
+    const fileName = "media/" + uniqueId + "." + metadata.type;
+    const fullFileName = "media/" + fileName;
+
+    metadata.fileName = fileName;
+    metadata.fullFileName = fullFileName;
 
     //var s3PolicyBase64;
     const date = new Date();
@@ -131,11 +178,11 @@ router.post('/validateMetadata', function (req, res, next) {
         "conditions": [
             { "bucket": AWS_BUCKET_NAME },
             ["starts-with", "$Content-Disposition", ""],
-            ["starts-with", "$key", "someFilePrefix_"],
+            ["eq", "$key", fullFileName],
             { "acl": "public-read" },
             { "success_action_redirect": redirectUrl },
             ["content-length-range", 0, 10 * 1048576],
-            ["eq", "$Content-Type", metadata.type]
+            ["eq", "$Content-Type", metadata.format + "/" + metadata.type] //metadata.type]
         ]
     };
 
@@ -154,12 +201,123 @@ router.post('/validateMetadata', function (req, res, next) {
             return;
         }
 
-        res.send({ uploadTask : uploadTask });
-        next();
+        // We want the same identifier for metadata object
+        uploadTask.metadata.identifier = uploadTask._id;
+
+        uploadTasks.findByIdAndUpdate(uploadTask._id, { $set: { metadata: uploadTask.metadata }}, function (err, updatedUploadTasks) {
+            if (err) return handleError(err);
+
+            res.send({ uploadTask : uploadTask });
+            next();
+        });
+
     });
 });
 
-//router.post();
+router.delete('/removeUploadTask/:taskId', function (req, res, next) {
+    const taskId = req.params.taskId;
+
+    uploadTasks.findById(taskId, function (error, uploadTask) {
+        if (error) {
+            next(error);
+            return;
+        }
+
+        verifyUpload(uploadTask, function (err, verified) {
+            if (err) {
+                next(err);
+                return;
+            }
+
+            const expirationDate = new Date(uploadTask.expiration);
+            // Task expired
+            var isExpired = new Date > expirationDate;
+
+            if (!verified) {
+                var error = new Error(isExpired ? "upload task has expired" : "upload was not success or file could not be found");
+                error.status = 400;
+                next(error);
+                return;
+            }
+
+            // upload was verified
+
+            removeUploadTask(uploadTask, function (err) {
+                if (err) {
+                    next(err);
+                    return;
+                }
+
+                saveMetadata(uploadTask.metadata, function (err, metadata) {
+                    if (err) {
+                        next(err);
+                        return;
+                    }
+
+                    res.status(200).end();
+                });
+            });
+        })
+    })
+});
+
+function autoCheck() {
+    uploadTasks.find({}).exec(function (err, multipleUploadTasks) {
+
+        if (err) {
+            console.log(err);
+            return;
+        }
+
+        for (var i = 0; i < multipleUploadTasks.length; i++) {
+            console.log(multipleUploadTasks[i]);
+        }
+        multipleUploadTasks.forEach(function (uploadTask) {
+            // Note that next line is an async call
+            verifyUpload(uploadTask, function (error, verified) {
+                if (error) {
+                    console.log(error);
+                    return;
+                }
+
+                const expirationDate = new Date(uploadTask.expiration);
+                // Task expired
+                var isExpired = new Date > expirationDate;
+
+                if (!verified && !isExpired) {
+                    return;
+                }
+
+                // upload was verified or has expired
+
+                removeUploadTask(uploadTask, function (err) {
+                    if (err) {
+                        next(err);
+                        return;
+                    }
+
+                    if (verified) {
+                        saveMetadata(uploadTask.metadata, function (err, metadata) {
+
+                        });
+                    }
+                });
+            })
+        });
+    });
+}
+
+
+var job = new CronJob({
+    cronTime: '* * 1 * * *', // Runs every hour
+    onTick: function() {
+        autoCheck();
+    },
+    start: false,
+    timeZone: 'America/Los_Angeles'
+});
+
+job.start();
 
 
 module.exports =  router;

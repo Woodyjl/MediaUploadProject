@@ -1,4 +1,3 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -25,13 +24,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const mongoose = require('mongoose');
+const uploadTasks = mongoose.model('UploadTasks');
+uploadTasks.find({}).exec(function (err, multipleUploadTasks) {
 
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
+    // for (var i = 0; i < multipleUploadTasks.length; i++) {
+    //     console.log(multipleUploadTasks[i]);
+    // }
 
+    var i = 0;
+    multipleUploadTasks.forEach(function (value) {
+        setTimeout(function(){
+            // this code will only run when time has ellapsed
+            console.log(value);
+        }, i++ * 1000);
 
+        return;
+    });
+    //console.log(multipleUploadTasks);
+});
 
 // Routes that will be accessed via AJAX should be prepended with
 // /api so they are isolated from our GET /* wildcard.
