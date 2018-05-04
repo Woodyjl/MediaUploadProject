@@ -176,3 +176,16 @@ Maximum file size: 10 mb
 
 ### Duration: integer (Required for video and audio media types) 
 In milliseconds
+
+### File Name: string (Will be inserted for image, video, and audio media types) 
+
+Example:
+
+image01.jpeg video01.mp4
+
+### Full File Name: integer (Will be inserted for image, video, and audio media types) 
+This is the path that the file is saved to in the aws s3 bucket.
+
+Example:
+
+user/images/image01.jpeg collection/march/video01.mp4
