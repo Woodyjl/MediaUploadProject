@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/datepicker.css"  type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <title>Update Data</title>
+    <title>Insert Metadata</title>
   </head>
   <body>
     <div id="alertBox">
@@ -20,11 +20,13 @@
     </div>
     <div class="outmostBox">
 
-      <h5>You are uploading <i>image1.png</i></h5>
+      <h5>You are uploading <i>image1.png</i>.</h5>
+      <p>Please add a title/date/any other data necessary using the forms below.</p>
+      <p>*Required</p>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text">Title</span>
+          <span class="input-group-text">Title*</span>
         </div>
         <input type="text" placeholder="e.g. Newly built home image" class="form-control" aria-label="">
       </div>
@@ -113,7 +115,7 @@
 
       <div class="btns flexColCenterIt">
         <hr>
-        <button class="btn btn-primary btn-lg">Submit</button>
+        <button class="btn btn-primary btn-lg" id="submit">Submit</button>
       </div>
 
     </div>
