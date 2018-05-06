@@ -63,7 +63,6 @@ $(document).ready(()=>{
 });
 
 
-//
 // function uploadMedia(file) {
 //
 //     s3.upload({
