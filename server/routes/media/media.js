@@ -133,6 +133,7 @@ router.post('/validateMetadata', function (req, res, next) {
 
     var metadata = req.body.metadata;
 
+    console.log(metadata);
     if (metadata === undefined || metadata instanceof Object === false) {
         var error = new Error("metadata is undefined or not a javascript object");
         error.status = 400;
@@ -158,7 +159,7 @@ router.post('/validateMetadata', function (req, res, next) {
         return;
     }
 
-    const redirectUrl = req.protocol + '://' + req.get('host') + req.originalUrl; //"http://example.com/uploadsuccess";
+    const redirectUrl = req.protocol + '://' + req.get('host') + req.originalUrl + "#Success"; //"http://example.com/uploadsuccess";
 
     const uniqueId = uuidv1(); // ⇨ 'f64f2940-fae4-11e7-8c5f-ef356f279131';
     const fileName = "media/" + uniqueId + "." + metadata.type;

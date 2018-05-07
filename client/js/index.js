@@ -1,8 +1,9 @@
-var script = document.createElement('script');
+//var script = document.createElement('script');
 var metadata = {};
+var currentUploadTask;
 
-script.src = 'https://code.jquery.com/jquery-3.3.1.min.js';
-document.getElementsByTagName('head')[0].appendChild(script);
+// script.src = 'https://code.jquery.com/jquery-3.3.1.min.js';
+// document.getElementsByTagName('head')[0].appendChild(script);
 
 // Customize logic here to retrieve location Id from url
 function getLocationId() {
@@ -53,6 +54,8 @@ getCoverageData(locationId);
 // Beginning of functions relating to upload process
 
 function processResponse( res ) {
+    console.log(res);
+    return;
     var uploadTask = res.uploadTask;
     var s3Credentials = uploadTask.s3Credentials;
     var metadata = uploadTask.metadata;
@@ -69,18 +72,44 @@ function processResponse( res ) {
     // set value of file to specific file
     //$()
 
+    currentUploadTask = uploadTask;
+
     $("#myform").submit();
 }
 
-// var requestCredentials = function(event) {
-//     event.preventDefault();
-//
-//
-// };
+var requestTheCredentials = function(event) {
+    event.preventDefault();
 
-function requsestCredentials() {
+    requestCredentials()
+};
+
+function requestCredentials() {
     // disable button to keep user from double clicking
-    $('#submit').disable(true);
+    //$('#submit').disable(true);
+
+    metadata = {
+        title : "The title",
+        creator : "Mr. Creator",
+        subject : undefined,
+        description : "u",
+        publisher : "The Publisher",
+        contributor : "Ms. Contributor",
+        date : "2012-1-31T11:00:00Z",// Joi.date().default(Date.now, 'time of creation'),
+        type : "t",
+        format : "audio",
+        identifier : "d2aLMGT_e2930fafHFI4383-94",
+        // source : "",
+        language : "English",
+        relation : undefined,
+        coverage : {
+            latitude : 1233445,
+            longitude : 987544
+        },
+        rights : undefined,
+        resolution : "1234x5678",
+        fileSize : "9tv",
+        duration : 1
+    };
 
     $.ajax({
         url: "http://localhost:3000/api/mediaUpload/validateMetadata",
@@ -90,20 +119,40 @@ function requsestCredentials() {
         success: processResponse,
         error: function(error) {
             // todo: Error!!! handle it
-            console.log("Error: " + error);
+            console.log("Error: " + JSON.stringify(error));
+            alert(JSON.stringify(error));
         }
 
     });
 }
 
-// $(document).ready(()=>{
-//     // Intercepts click event on form submit button
-//     $( "#btn_submit" ).bind( "click", requestCredentials );
+$(document).ready(()=>{
+    // Intercepts click event on form submit button
+    $( "#btn_submit" ).bind( "click", requestTheCredentials );
+
+// $(function(){
+//     $("#upload").click(function(){
+//
+//         requestCredentials()
+//     });
 // });
-
-$(function(){
-    $("#upload").click(function(){
-
-        requsestCredentials()
-    });
 });
+
+function onUploadTaskRemoval(res) {
+    // deletion successful
+}
+function onUploadSuccess() {
+
+    $.ajax({
+        url: "http://localhost:3000/api/removeUploadTask/" + currentUploadTask._id,
+        type: "DELETE",
+        success: onUploadSuccess(),
+        error: function(error) {
+            // todo: Error!!! handle it
+            console.log("Error: " + JSON.stringify(error));
+            alert(JSON.stringify(error));
+        }
+
+    });
+}
+
