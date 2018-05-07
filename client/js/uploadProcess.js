@@ -18,17 +18,30 @@ function processResponse( res ) {
 var requestCredentials = function(event) {
     event.preventDefault();
 
-    var metadata;
+    var metadata, title, date, creator, subject, description, language, publisher, contributor, source, relation, rights;
 
 
     // todo: Correctly grab metadata
     metadata = {
-
+      title : $("#title").val(),
+      date : $("#date").val(),
+      creator : $("#creator").val(),
+      subject : $("#subject").val(),
+      description : $("#description").val(),
+      language : $("#language").val(),
+      publisher : $("#publisher").val(),
+      contributor : $("#contributor").val(),
+      source : $("#source").val(),
+      relation : $("#relation").val(),
+      rights : $("#rights").val()
         // title : $("#name").val(),
         // name :  {
         //     parameter : $("").val()
         // }
     };
+
+
+    console.log(metadata);
 
     $.ajax({
         url: "http://localhost:3000/api/mediaUpload/validateMetadata",
