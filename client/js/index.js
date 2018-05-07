@@ -9,37 +9,37 @@ var fileSize;
 var duration;
 var format;
 
-format = $('#example').val().split('.').pop().toLowerCase();
-if($.inArray(format, ['mp4', 'mov', 'flv', 'wmv', 'avi']) !== -1) {
-  fileType = "video";
-
-  var video = $('#example');
-  video[0].videoWidth;
-  video[0].videoHeight;
-  resolution = video[0].videoWidth + "x" + video[0].videoHeight;
-
-  //get fileSize
-  //get duration
-}
-else if($.inArray(format, ['jpg', 'jpeg', 'tiff', 'png']) !== -1) {
-  fileType = "image";
-
-  var image = $('#example');
-  image[0].videoWidth;
-  image[0].videoHeight;
-  resolution = image[0].videoWidth + "x" + image[0].videoHeight;
-
-  //get fileSize
-}
-else if($.inArray(format, ['mp3', 'wav', 'aiff', 'ogg']) !== -1) {
-  fileType = "audio";
-  //get fileSize
-  //get duration
-  var audioElement = document.createElement('audio');
-  audioElement.addEventListenever("loadmetadata", function(_event) {
-    duration = audioElement.duration;
-  });
-}
+// format = $('#example').val().split('.').pop().toLowerCase();
+// if($.inArray(format, ['mp4', 'mov', 'flv', 'wmv', 'avi']) !== -1) {
+//   fileType = "video";
+//
+//   var video = $('#example');
+//   video[0].videoWidth;
+//   video[0].videoHeight;
+//   resolution = video[0].videoWidth + "x" + video[0].videoHeight;
+//
+//   //get fileSize
+//   //get duration
+// }
+// else if($.inArray(format, ['jpg', 'jpeg', 'tiff', 'png']) !== -1) {
+//   fileType = "image";
+//
+//   var image = $('#example');
+//   image[0].videoWidth;
+//   image[0].videoHeight;
+//   resolution = image[0].videoWidth + "x" + image[0].videoHeight;
+//
+//   //get fileSize
+// }
+// else if($.inArray(format, ['mp3', 'wav', 'aiff', 'ogg']) !== -1) {
+//   fileType = "audio";
+//   //get fileSize
+//   //get duration
+//   var audioElement = document.createElement('audio');
+//   audioElement.addEventListenever("loadmetadata", function(_event) {
+//     duration = audioElement.duration;
+//   });
+// }
 
 
 // script.src = 'https://code.jquery.com/jquery-3.3.1.min.js';
@@ -166,9 +166,10 @@ function requestCredentials() {
     });
 }
 
-$(document).ready(()=>{
+$(document).ready(()=> {
     // Intercepts click event on form submit button
-    $( "#btn_submit" ).bind( "click", requestTheCredentials );
+    $( "#btn_submit").bind("click", requestTheCredentials);
+});
 
 // $(function(){
 //     $("#upload").click(function(){

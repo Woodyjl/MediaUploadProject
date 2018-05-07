@@ -27,9 +27,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 const mongoose = require('mongoose');
 const uploadTasks = mongoose.model('UploadTasks');
 
+app.use('/*', function (req, res, next) {
+    res.header("Access-Control-Allow-Headers","*");
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    next();
+});
+
 // Routes that will be accessed via AJAX should be prepended with
 // /api so they are isolated from our GET /* wildcard.
 app.use('/api', require('./routes'));
+
+app.use(express.static(path.join(__dirname, '../client/')));
+// app.get('/*', function(req, res) {
+//     res.sendFile(path.join(__dirname+'/../client/index.html'));
+//     // var html = fs.readFileSync('./html/test.html', 'utf8')
+//     // res.render('test', { html: html })
+// });
 
 
 

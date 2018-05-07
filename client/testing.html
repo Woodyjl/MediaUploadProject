@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="https://s3-bucket.s3.amazonaws.com/" method="post" enctype="multipart/form-data" id="myform">
+    <input type="hidden" name="key" value="uploads/${filename}">
+    <input type="hidden" name="AWSAccessKeyId" value="YOUR_AWS_ACCESS_KEY" id="fld_AWSAccessKeyId">
+    <input type="hidden" name="acl" value="private">
+    <input type="hidden" name="success_action_redirect" value="http://localhost/" id="fld_redirect">
+    <input type="hidden" name="policy" value="YOUR_POLICY_DOCUMENT_BASE64_ENCODED" id="fld_Policy">
+    <input type="hidden" name="signature" value="YOUR_CALCULATED_SIGNATURE" id="fld_Signature">
+    <input type="hidden" name="Content-Type" value="image/jpeg" id="fld_contentType">
+    Include any additional input fields here
+    File to upload to S3: <input name="file" type="file">
+    <br>
+    <input type="submit" value="Upload File to S3" id="btn_submit">
+</form>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="js/index.js"></script>
+</html>
