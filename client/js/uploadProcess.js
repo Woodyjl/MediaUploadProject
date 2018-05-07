@@ -1,28 +1,10 @@
-
-// var AWS = window.AWS;
-//
-// console.log(AWS);
-//
-// var albumBucketName = 'BUCKET_NAME';
-// var bucketRegion = 'REGION';
-// var IdentityPoolId = 'IDENTITY_POOL_ID';
-//
-// AWS.config.update({
-//     region: bucketRegion,
-//     credentials: new AWS.CognitoIdentityCredentials({
-//         IdentityPoolId: IdentityPoolId
-//     })
-// });
-//
-// var s3 = new AWS.S3({
-//     apiVersion: '2006-03-01',
-//     params: {Bucket: albumBucketName}
-// });
-
 function processResponse( res ) {
     var uploadTask = res.uploadTask;
     var s3Credentials = uploadTask.s3Credentials;
     var metadata = uploadTask.metadata;
+    const bucketName = s3Credentials.s3Policy.conditions.bucket;
+
+    $("#myform").attr("action", "https://" + bucketName + ".s3.amazonaws.com/");
 
     $("#fld_redirect").val(s3Credentials.s3Redirect);
     $("#fld_AWSAccessKeyId").val(s3Credentials.s3Key);
@@ -61,28 +43,3 @@ $(document).ready(()=>{
     // Intercepts click event on form submit button
     $( "#btn_submit" ).bind( "click", requestCredentials );
 });
-
-
-//
-// function uploadMedia(file) {
-//
-//     s3.upload({
-//         Key: photoKey,
-//         Body: file,
-//         ACL: 'public-read'
-//     }, function(err, data) {
-//         if (err) {
-//             return alert('There was an error uploading your photo: ', err.message);
-//         }
-//         alert('Successfully uploaded photo.');
-//         viewAlbum(albumName);
-//     });
-//
-//
-//     $("#fld_redirect").val(res.S3Redirect);
-//     $("#fld_AWSAccessKeyId").val(res.s3Key);
-//     $("#fld_Policy").val(res.s3PolicyBase64);
-//     $("#fld_Signature").val(res.s3Signature);
-//     [...]
-//     $("#myform").submit();
-// }
