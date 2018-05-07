@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ca59992-0ec0-46ec-9145-f2898c13829f" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/client/js/master.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="$PROJECT_DIR$/client/dataInput.html" afterPath="$PROJECT_DIR$/client/dataInput.html" />
+      <change beforePath="$PROJECT_DIR$/client/index.html" afterPath="$PROJECT_DIR$/client/index.html" />
+      <change beforePath="$PROJECT_DIR$/client/js/dataInput.js" afterPath="$PROJECT_DIR$/client/js/dataInput.js" />
       <change beforePath="$PROJECT_DIR$/client/js/uploadProcess.js" afterPath="$PROJECT_DIR$/client/js/uploadProcess.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -70,18 +75,38 @@
       <file leaf-file-name="uploadProcess.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/js/uploadProcess.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="54" lean-forward="true" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
+            <state relative-caret-position="720">
+              <caret line="48" column="59" lean-forward="true" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dataInput.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/dataInput.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="467">
+              <caret line="133" column="4" lean-forward="true" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+            <state relative-caret-position="308">
+              <caret line="21" column="99" lean-forward="true" selection-start-line="21" selection-start-column="99" selection-end-line="21" selection-end-column="110" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="master.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/js/master.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,13 +143,15 @@
         <option value="$PROJECT_DIR$/server/routes/media.js" />
         <option value="$PROJECT_DIR$/server/bin/www" />
         <option value="$PROJECT_DIR$/server/database/index.js" />
-        <option value="$PROJECT_DIR$/client/index.html" />
         <option value="$PROJECT_DIR$/server/routes/index.js" />
         <option value="$PROJECT_DIR$/server/database/models/index.js" />
         <option value="$PROJECT_DIR$/server/database/models/uploadTask.js" />
         <option value="$PROJECT_DIR$/server/database/models/mediaMetadata.js" />
         <option value="$PROJECT_DIR$/server/app.js" />
         <option value="$PROJECT_DIR$/server/routes/media/media.js" />
+        <option value="$PROJECT_DIR$/client/js/master.js" />
+        <option value="$PROJECT_DIR$/client/index.html" />
+        <option value="$PROJECT_DIR$/client/dataInput.html" />
         <option value="$PROJECT_DIR$/client/js/uploadProcess.js" />
       </list>
     </option>
@@ -253,12 +280,12 @@
       <workItem from="1522269332038" duration="2120000" />
       <workItem from="1522795062456" duration="8995000" />
       <workItem from="1523505210290" duration="1902000" />
-      <workItem from="1524368086940" duration="64755000" />
+      <workItem from="1524368086940" duration="65589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77772000" />
+    <option name="totallyTimeSpent" value="78606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1280" height="800" extended-state="6" />
@@ -465,19 +492,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="3" />
           <folding>
-            <marker date="1524461711294" expanded="true" signature="127:547" ph="..." />
-            <marker date="1524461711294" expanded="true" signature="289:389" ph="..." />
-            <marker date="1524461711294" expanded="true" signature="472:536" ph="..." />
-            <marker date="1524461711294" expanded="false" signature="507:514" ph="×" />
+            <marker date="1525659459477" expanded="true" signature="127:547" ph="..." />
+            <marker date="1525659459477" expanded="true" signature="289:389" ph="..." />
+            <marker date="1525659459477" expanded="true" signature="472:536" ph="..." />
+            <marker date="1525659459477" expanded="false" signature="507:514" ph="×" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/dataInput.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="122" column="4" lean-forward="false" selection-start-line="122" selection-start-column="4" selection-end-line="122" selection-end-column="184" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -587,18 +606,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/js/master.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/js/uploadProcess.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="54" lean-forward="true" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
+        <state relative-caret-position="720">
+          <caret line="48" column="59" lean-forward="true" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+        <state relative-caret-position="308">
+          <caret line="21" column="99" lean-forward="true" selection-start-line="21" selection-start-column="99" selection-end-line="21" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/dataInput.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="133" column="4" lean-forward="true" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
           <folding />
         </state>
       </provider>

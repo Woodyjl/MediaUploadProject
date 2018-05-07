@@ -17,13 +17,18 @@ function processResponse( res ) {
 
 var requestCredentials = function(event) {
     event.preventDefault();
-    var file;
+
     var metadata;
 
-    // todo: Correctly grab the file
-    //file = $("#file").val().replace(/.+[\\\/]/, "");
+
     // todo: Correctly grab metadata
-    metadata = {};
+    metadata = {
+
+        // title : $("#name").val(),
+        // name :  {
+        //     parameter : $("").val()
+        // }
+    };
 
     $.ajax({
         url: "http://localhost:3000/api/mediaUpload/validateMetadata",
