@@ -26,16 +26,17 @@
   </head>
   <body>
     <form action="https://s3-bucket.s3.amazonaws.com/" method="post" enctype="multipart/form-data" id="myform">
-      <input type="hidden" name="key" value="uploads/${filename}"> <input type="hidden" name="AWSAccessKeyId" value="YOUR_AWS_ACCESS_KEYydnbdbssrnnr" id="fld_AWSAccessKeyId">
+      <input type="hidden" name="key" value="uploads/${filename}">
+      <input type="hidden" name="AWSAccessKeyId" value="YOUR_AWS_ACCESS_KEY" id="fld_AWSAccessKeyId">
       <input type="hidden" name="acl" value="private">
       <input type="hidden" name="success_action_redirect" value="http://localhost/" id="fld_redirect">
       <input type="hidden" name="policy" value="YOUR_POLICY_DOCUMENT_BASE64_ENCODED" id="fld_Policy">
       <input type="hidden" name="signature" value="YOUR_CALCULATED_SIGNATURE" id="fld_Signature">
       <input type="hidden" name="Content-Type" value="image/jpeg" id="fld_contentType">
       <!-- Include any additional input fields here -->
-      File to upload to S3: <input name="file" type="file">
-      <br>
-      <input type="submit" value="Upload File to S3" id="btn_submit">
+      <!--File to upload to S3: <input name="file" type="file">-->
+      <!--<br>-->
+      <!--<input type="submit" value="Upload File to S3" id="btn_submit">-->
     </form>
 
     <div class="container outmostBox">
@@ -56,12 +57,6 @@
             <p><strong>Choose a file</strong> or drag it here.</p>
           </div>
         </form>
-      </div>
-      <div class="row flexColCenterIt btns">
-        <button class="btn btn-primary btn-lg" type="submit" id="upload">Upload</button>
-        <hr>
-        <button class="btn btn-secondary btn-lg">I just have text input</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg">Select a different location</button>
       </div>
     </div>
 
@@ -167,7 +162,7 @@
 
         <div class="btns flexColCenterIt">
           <hr>
-          <button class="btn btn-primary btn-lg" id="submit">Submit</button>
+          <button class="btn btn-primary btn-lg" id="submit">Upload</button>
         </div>
 
       </div>
@@ -187,7 +182,7 @@
       <!-- End AWS sdk -->
       <script src="js/uploadProcess.js"></script>
     </body>
-    
+
     <!-- Optional JavaScript for Bootstrap -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -158,7 +158,7 @@ router.post('/validateMetadata', function (req, res, next) {
         return;
     }
 
-    const redirectUrl = "http://example.com/uploadsuccess";
+    const redirectUrl = req.protocol + '://' + req.get('host') + req.originalUrl; //"http://example.com/uploadsuccess";
 
     const uniqueId = uuidv1(); // ⇨ 'f64f2940-fae4-11e7-8c5f-ef356f279131';
     const fileName = "media/" + uniqueId + "." + metadata.type;
