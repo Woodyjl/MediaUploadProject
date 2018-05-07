@@ -16,18 +16,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dataInput.css">
     <link rel="stylesheet" href="css/datepicker.css"  type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">-->
 
     <title>Upload Media</title>
   </head>
@@ -74,127 +67,127 @@
 
     <title>Insert Metadata</title>
     <body>
-    <div id="alertBox">
-      <!-- JS will insert alertBox here. condition 1. visual media condition 2. just text -->
-    </div>
-    <div class="outmostBox">
+      <div id="alertBox">
+        <!-- JS will insert alertBox here. condition 1. visual media condition 2. just text -->
+      </div>
+      <div class="outmostBox">
 
-      <h5>You are uploading <i>image1.png</i>.</h5>
-      <p>Please add a title/date/any other data necessary using the forms below.</p>
-      <p>*Required</p>
+        <h5>You are uploading <i>image1.png</i>.</h5>
+        <p>Please add a title/date/any other data necessary using the forms below.</p>
+        <p>*Required</p>
 
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Title*</span>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Title*</span>
+          </div>
+          <input id="title" type="text" placeholder="e.g. Newly built home image" class="form-control" aria-label="">
         </div>
-        <input type="text" placeholder="e.g. Newly built home image" class="form-control" aria-label="">
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Date</span>
+          </div>
+          <input id="date" type="text" class="form-control" placeholder="Pick a date" data-toggle="datepicker">
+          <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary docs-datepicker-trigger">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Creator</span>
+          </div>
+          <input id="creator" placeholder="John Doe" type="text" class="form-control" aria-label="">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Subject</span>
+          </div>
+          <input id="subject" type="text" placeholder="e.g. house front, outside view" class="form-control" aria-label="">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Description</span>
+          </div>
+          <textarea id="description" class="form-control" aria-label="With textarea" style="min-height: 100px;"></textarea>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Language</span>
+          </div>
+          <select class="custom-select" id="language inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">EN/English</option>
+            <option value="2">ES/Spanish</option>
+            <option value="3">ZH/Chinese</option>
+            <option value="4">AR/Arabic</option>
+            <option value="5">PT/Portuguese</option>
+            <option value="6">KO/Korean</option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Publisher</span>
+          </div>
+          <input id="publisher" type="text" placeholder="e.g. University of Miami" class="form-control" aria-label="">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Contributor</span>
+          </div>
+          <input id="contributor" type="text" class="form-control" aria-label="">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Source</span>
+          </div>
+          <input id="source" type="text" class="form-control" aria-label="">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Relation</span>
+          </div>
+          <input id="relation" type="text" class="form-control" aria-label="">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Rights</span>
+          </div>
+          <input id="rights" type="text" class="form-control" aria-label="">
+        </div>
+
+        <div class="btns flexColCenterIt">
+          <hr>
+          <button class="btn btn-primary btn-lg" id="submit">Submit</button>
+        </div>
+
       </div>
 
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Date</span>
-        </div>
-        <input type="text" class="form-control" placeholder="Pick a date" data-toggle="datepicker">
-        <div class="input-group-append">
-          <button type="button" class="btn btn-outline-secondary docs-datepicker-trigger">
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+      <script src="js/dataInput.js"></script>
+      <script src="js/datepicker.js"></script>
+      <!-- <script src="js/datepicker.en.js"></script> -->
 
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Creator</span>
-        </div>
-        <input disabled value="John Doe" type="text" class="form-control" aria-label="">
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Subject</span>
-        </div>
-        <input type="text" placeholder="e.g. house front, outside view" class="form-control" aria-label="">
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Description</span>
-        </div>
-        <textarea class="form-control" aria-label="With textarea" style="min-height: 100px;"></textarea>
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Language</span>
-        </div>
-        <select class="custom-select" id="inputGroupSelect01">
-          <option selected>Choose...</option>
-          <option value="1">EN/English</option>
-          <option value="2">ES/Spanish</option>
-          <option value="3">ZH/Chinese</option>
-          <option value="4">AR/Arabic</option>
-          <option value="5">PT/Portuguese</option>
-          <option value="6">KO/Korean</option>
-        </select>
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Publisher</span>
-        </div>
-        <input type="text" placeholder="e.g. University of Miami" class="form-control" aria-label="">
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Contributor</span>
-        </div>
-        <input type="text" class="form-control" aria-label="">
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Source</span>
-        </div>
-        <input type="text" class="form-control" aria-label="">
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Relation</span>
-        </div>
-        <input type="text" class="form-control" aria-label="">
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Rights</span>
-        </div>
-        <input type="text" class="form-control" aria-label="">
-      </div>
-
-      <div class="btns flexColCenterIt">
-        <hr>
-        <button class="btn btn-primary btn-lg" id="submit">Submit</button>
-      </div>
-
-    </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script src="js/dataInput.js"></script>
-    <script src="js/datepicker.js"></script>
-    <!-- <script src="js/datepicker.en.js"></script> -->
-
-    <!-- AWS sdk -->
-    <!--<script src="https://sdk.amazonaws.com/js/aws-sdk-2.227.1.min.js"></script>-->
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <!-- End AWS sdk -->
+      <!-- AWS sdk -->
+      <!--<script src="https://sdk.amazonaws.com/js/aws-sdk-2.227.1.min.js"></script>-->
+      <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+      <!-- End AWS sdk -->
+      <script src="js/uploadProcess.js"></script>
     </body>
-
-
+    
     <!-- Optional JavaScript for Bootstrap -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
