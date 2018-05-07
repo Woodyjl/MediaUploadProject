@@ -1,0 +1,37 @@
+var fileType;
+var resolution;
+var fileSize;
+var duration;
+var format;
+
+format = $('#example').val().split('.').pop().toLowerCase();
+if($.inArray(format, ['mp4', 'mov', 'flv', 'wmv', 'avi']) !== -1) {
+  fileType = "video";
+
+  var video = $('#example');
+  video[0].videoWidth;
+  video[0].videoHeight;
+  resolution = video[0].videoWidth + "x" + video[0].videoHeight;
+
+  //get fileSize
+  //get duration
+}
+else if($.inArray(format, ['jpg', 'jpeg', 'tiff', 'png']) !== -1) {
+  fileType = "image";
+
+  var image = $('#example');
+  image[0].videoWidth;
+  image[0].videoHeight;
+  resolution = image[0].videoWidth + "x" + image[0].videoHeight;
+
+  //get fileSize
+}
+else if($.inArray(format, ['mp3', 'wav', 'aiff', 'ogg']) !== -1) {
+  fileType = "audio";
+  //get fileSize
+  //get duration
+  var audioElement = document.createElement('audio');
+  audioElement.addEventListenever("loadmetadata", function(_event) {
+    duration = audioElement.duration;
+  });
+}
